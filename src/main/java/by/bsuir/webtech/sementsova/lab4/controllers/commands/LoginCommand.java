@@ -1,6 +1,6 @@
 package by.bsuir.webtech.sementsova.lab4.controllers.commands;
 
-import by.bsuir.webtech.sementsova.lab4.entity.Role;
+import by.bsuir.webtech.sementsova.lab4.entity.roles.Role;
 import by.bsuir.webtech.sementsova.lab4.entity.User;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
 import by.bsuir.webtech.sementsova.lab4.services.UserService;

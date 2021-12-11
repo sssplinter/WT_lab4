@@ -1,7 +1,8 @@
 package by.bsuir.webtech.sementsova.lab4.entity;
 
+import by.bsuir.webtech.sementsova.lab4.entity.roles.Role;
+
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class User implements Serializable, Entity {

@@ -1,8 +1,8 @@
 package by.bsuir.webtech.sementsova.lab4.controllers.commands;
 
-import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.AddRoomCommand;
-import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.RidRoomCommand;
-import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.ShowRoomsCommand;
+import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.AddHotelRoomCommand;
+import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.RidHotelRoomCommand;
+import by.bsuir.webtech.sementsova.lab4.controllers.commands.admin.ShowHotelRoomsCommand;
 import by.bsuir.webtech.fourth.task.controller.command.common.*;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.user.MainPageCommand;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.user.MakeOrderCommand;
@@ -33,17 +33,17 @@ public class CommandFactory {
             case LOGIN:
                 return new LoginCommand();
             case SHOW_ROOMS:
-                return new ShowRoomsCommand();
+                return new ShowHotelRoomsCommand();
             case MAIN_PAGE:
                 return new MainPageCommand();
             case CHANGE_LANGUAGE:
                 return new ChangeLanguageCommand();
             case ADD_ROOM:
-                return new AddRoomCommand();
+                return new AddHotelRoomCommand();
             case MAKE_ORDER:
                 return new MakeOrderCommand();
             case DEOCCUPY_ROOM:
-                return new RidRoomCommand();
+                return new RidHotelRoomCommand();
             case LOG_OUT:
                 return new LogOutCommand();
             case START_PAGE:

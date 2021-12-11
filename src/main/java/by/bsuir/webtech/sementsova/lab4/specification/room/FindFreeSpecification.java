@@ -5,11 +5,14 @@ import by.bsuir.webtech.sementsova.lab4.specification.Specification;
 import java.util.Collections;
 import java.util.List;
 
-public class FindAll implements Specification {
+public class FindFreeSpecification implements Specification {
+
+    public FindFreeSpecification() {
+    }
 
     @Override
     public String toSql() {
-        return "";
+        return "WHERE occupied = 'false'";
     }
 
     @Override

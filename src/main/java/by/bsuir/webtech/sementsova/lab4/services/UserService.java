@@ -5,8 +5,8 @@ import by.bsuir.webtech.sementsova.lab4.exceptions.DBRepositoryException;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
 import by.bsuir.webtech.sementsova.lab4.repository.creator.RepositoryCreator;
 import by.bsuir.webtech.sementsova.lab4.repository.impl.UserRepository;
-import by.bsuir.webtech.sementsova.lab4.specification.FindById;
-import by.bsuir.webtech.sementsova.lab4.specification.user.FindByUsername;
+import by.bsuir.webtech.sementsova.lab4.specification.FindByIdSpecification;
+import by.bsuir.webtech.sementsova.lab4.specification.user.FindByUsernameSpecification;
 import by.bsuir.webtech.sementsova.lab4.specification.user.FindByUsernameAndPassword;
 
 import java.util.Optional;
@@ -25,7 +25,7 @@ public class UserService {
     public Optional<User> findById(Integer id) throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
             UserRepository userRepository = repositoryCreator.getUserRepository();
-            return userRepository.query(new FindById(id));
+            return userRepository.query(new FindByIdSpecification(id));
         } catch (DBRepositoryException ex) {
             throw new ServiceException(ex.getMessage());
         }
@@ -34,7 +34,7 @@ public class UserService {
     public Optional<User> findByUsername(String username) throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
             UserRepository userRepository = repositoryCreator.getUserRepository();
-            return userRepository.query(new FindByUsername(username));
+            return userRepository.query(new FindByUsernameSpecification(username));
         } catch (DBRepositoryException ex) {
             throw new ServiceException(ex.getMessage());
         }

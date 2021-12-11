@@ -1,16 +1,16 @@
 package by.bsuir.webtech.sementsova.lab4.specification.user;
 
-import by.bsuir.webtech.sementsova.lab4.entity.Role;
+import by.bsuir.webtech.sementsova.lab4.entity.roles.Role;
 import by.bsuir.webtech.sementsova.lab4.specification.Specification;
 
 import java.util.Collections;
 import java.util.List;
 
-public class FindByRole implements Specification {
+public class FindByRoleSpecification implements Specification {
 
     private final Role role;
 
-    public FindByRole(Role role) {
+    public FindByRoleSpecification(Role role) {
         this.role = role;
     }
 

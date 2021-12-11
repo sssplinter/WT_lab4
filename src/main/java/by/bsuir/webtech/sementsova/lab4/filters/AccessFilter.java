@@ -1,6 +1,6 @@
 package by.bsuir.webtech.sementsova.lab4.filters;
 
-import by.bsuir.webtech.sementsova.lab4.entity.Role;
+import by.bsuir.webtech.sementsova.lab4.entity.roles.Role;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,7 @@ public class AccessFilter implements Filter {
     private static final String MAIN_PAGE = "mainPage";
     private static final String MAKE_ORDER = "makeOrder";
     private static final String ADD_ROOM = "addRoom";
-    private static final String DEOCCUPY_ROOM = "deoccupyRoom";
+    private static final String RID_ROOM = "ridRoom";
     private static final String ROLE = "role";
     private static final String COMMAND = "command";
     private static final Integer ERROR_NUMBER = 403;
@@ -31,7 +31,7 @@ public class AccessFilter implements Filter {
         if (parameter != null) {
             HttpSession session = ((HttpServletRequest) servletRequest).getSession();
             Role role = (Role) session.getAttribute(ROLE);
-            if (parameter.equals(SHOW_ROOMS) || parameter.equals(ADD_ROOM) || parameter.equals(DEOCCUPY_ROOM)) {
+            if (parameter.equals(SHOW_ROOMS) || parameter.equals(ADD_ROOM) || parameter.equals(RID_ROOM)) {
                 if (role.equals(Role.USER)) {
                     ((HttpServletResponse) servletResponse).sendError(ERROR_NUMBER);
                     return;

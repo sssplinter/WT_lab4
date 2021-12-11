@@ -2,15 +2,15 @@ package by.bsuir.webtech.sementsova.lab4.controllers.commands.admin;
 
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.Command;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.CommandResult;
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
-import by.bsuir.webtech.sementsova.lab4.services.RoomService;
+import by.bsuir.webtech.sementsova.lab4.services.HotelRoomService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class ShowRoomsCommand implements Command {
+public class ShowHotelRoomsCommand implements Command {
     private static final String ROOMS_PAGE = "/WEB-INF/pages/admin/rooms.jsp";
     private static final String ROOM_LIST = "roomList";
     private static final String MESSAGE = "message";
@@ -18,9 +18,9 @@ public class ShowRoomsCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        RoomService roomService = new RoomService();
-        List<Room> fullRoomList = roomService.findAll();
-        request.setAttribute(ROOM_LIST, fullRoomList);
+        HotelRoomService hotelRoomService = new HotelRoomService();
+        List<HotelRoom> fullHotelRoomList = hotelRoomService.findAll();
+        request.setAttribute(ROOM_LIST, fullHotelRoomList);
 
         String notifyMessage = request.getParameter(MESSAGE);
         if (notifyMessage != null) {

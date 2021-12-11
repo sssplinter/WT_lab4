@@ -30,19 +30,19 @@
                 <th>${occupied}</th>
                 <th></th>
             </tr>
-            <jsp:useBean id="roomList" scope="request" type="java.util.List"/>
-            <c:forEach items="${roomList}" var="room">
+            <jsp:useBean id="hotelRoomList" scope="request" type="java.util.List"/>
+            <c:forEach items="${hotelRoomList}" var="hotelRoom">
                 <tr>
                     <td>
-                            ${room.roomNumber}
+                            ${hotelRoom.roomNumber}
                     </td>
                     <td>
-                            ${room.occupied}
+                            ${hotelRoom.occupied}
                     </td>
                     <td>
                         <form action="${pageContext.servletContext.contextPath}/controller?command=deoccupyRoom"
                               method="post">
-                            <input type="hidden" id="roomId" name="roomId" value="${room.id}">
+                            <input type="hidden" id="roomId" name="roomId" value="${hotelRoom.id}">
                             <input type="submit" value="${deoccupy}">
                         </form>
                     </td>
@@ -56,6 +56,6 @@
         </button>
     </div>
 
-    <jsp:include page="/WEB-INF/fragments/room/addRoom.jsp"/>
+    <jsp:include page="/WEB-INF/fragments/hotelRoom/addRoom.jsp"/>
 </body>
 </html>

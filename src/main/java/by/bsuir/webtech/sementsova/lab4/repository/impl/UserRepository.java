@@ -56,5 +56,4 @@ public class UserRepository extends AbstractRepository<User> {
         List<Object> params = specification.getParameters();
         return executeQuery(query, builder, params);
     }
-
 }

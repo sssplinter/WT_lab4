@@ -1,4 +1,4 @@
-package by.bsuir.webtech.sementsova.lab4.entity;
+package by.bsuir.webtech.sementsova.lab4.entity.roles;
 
 public enum Role {
     USER("user"),

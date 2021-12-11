@@ -1,32 +1,32 @@
 package by.bsuir.webtech.sementsova.lab4.services;
 
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.DBRepositoryException;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
 import by.bsuir.webtech.sementsova.lab4.repository.creator.RepositoryCreator;
-import by.bsuir.webtech.sementsova.lab4.repository.impl.RoomRepository;
-import by.bsuir.webtech.sementsova.lab4.specification.FindById;
-import by.bsuir.webtech.sementsova.lab4.specification.room.FindAll;
-import by.bsuir.webtech.sementsova.lab4.specification.room.FindFree;
+import by.bsuir.webtech.sementsova.lab4.repository.impl.HotelRoomRepository;
+import by.bsuir.webtech.sementsova.lab4.specification.FindByIdSpecification;
+import by.bsuir.webtech.sementsova.lab4.specification.room.FindAllSpecification;
+import by.bsuir.webtech.sementsova.lab4.specification.room.FindFreeSpecification;
 
 import java.util.List;
 import java.util.Optional;
 
-public class RoomService {
+public class HotelRoomService {
 
-    public List<Room> findAll() throws ServiceException {
+    public List<HotelRoom> findAll() throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
-            RoomRepository roomRepository = repositoryCreator.getRoomRepository();
-            return roomRepository.queryAll(new FindAll());
+            HotelRoomRepository hotelRoomRepository = repositoryCreator.getRoomRepository();
+            return hotelRoomRepository.queryAll(new FindAllSpecification());
         } catch (DBRepositoryException ex) {
             throw new ServiceException(ex.getMessage());
         }
     }
 
-    public List<Room> findFree() throws ServiceException {
+    public List<HotelRoom> findFree() throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
-            RoomRepository roomRepository = repositoryCreator.getRoomRepository();
-            return roomRepository.queryAll(new FindFree());
+            HotelRoomRepository hotelRoomRepository = repositoryCreator.getRoomRepository();
+            return hotelRoomRepository.queryAll(new FindFreeSpecification());
         } catch (DBRepositoryException ex) {
             throw new ServiceException(ex.getMessage());
         }
@@ -34,9 +34,9 @@ public class RoomService {
 
     public void saveRoom(Integer id, String roomNumber, Boolean occupied) throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
-            RoomRepository roomRepository = repositoryCreator.getRoomRepository();
-            Room room = new Room(id, roomNumber, occupied);
-            roomRepository.save(room);
+            HotelRoomRepository hotelRoomRepository = repositoryCreator.getRoomRepository();
+            HotelRoom hotelRoom = new HotelRoom(id, roomNumber, occupied);
+            hotelRoomRepository.save(hotelRoom);
         } catch (DBRepositoryException ex) {
             throw new ServiceException(ex.getMessage());
         }
@@ -44,11 +44,11 @@ public class RoomService {
 
     public void changeStatus(Integer id, Boolean occupied) throws ServiceException {
         try (RepositoryCreator repositoryCreator = new RepositoryCreator()) {
-            RoomRepository roomRepository = repositoryCreator.getRoomRepository();
-            Optional<Room> room = roomRepository.query(new FindById(id));
+            HotelRoomRepository hotelRoomRepository = repositoryCreator.getRoomRepository();
+            Optional<HotelRoom> room = hotelRoomRepository.query(new FindByIdSpecification(id));
             if (room.isPresent()) {
                 room.get().setOccupied(occupied);
-                roomRepository.save(room.get());
+                hotelRoomRepository.save(room.get());
             } else {
                 throw new ServiceException("No such room id");
             }

@@ -2,15 +2,15 @@ package by.bsuir.webtech.sementsova.lab4.controllers.commands.admin;
 
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.Command;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.CommandResult;
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
-import by.bsuir.webtech.sementsova.lab4.services.RoomService;
+import by.bsuir.webtech.sementsova.lab4.services.HotelRoomService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class RidRoomCommand implements Command {
+public class RidHotelRoomCommand implements Command {
     private static final String MAIN_PAGE = "controller?command=showRooms";
     private static final String ROOM_LIST = "roomList";
     private static final String ROOM_ID = "roomId";
@@ -19,11 +19,11 @@ public class RidRoomCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         String roomId = request.getParameter(ROOM_ID);
 
-        RoomService roomService = new RoomService();
-        roomService.changeStatus(Integer.valueOf(roomId), false);
+        HotelRoomService hotelRoomService = new HotelRoomService();
+        hotelRoomService.changeStatus(Integer.valueOf(roomId), false);
 
-        List<Room> roomList = roomService.findAll();
-        request.setAttribute(ROOM_LIST, roomList);
+        List<HotelRoom> hotelRoomList = hotelRoomService.findAll();
+        request.setAttribute(ROOM_LIST, hotelRoomList);
 
         return CommandResult.redirect(MAIN_PAGE);
     }

@@ -5,11 +5,11 @@ import by.bsuir.webtech.sementsova.lab4.specification.Specification;
 import java.util.Collections;
 import java.util.List;
 
-public class FindByUsername implements Specification {
+public class FindByUsernameSpecification implements Specification {
 
     private final String username;
 
-    public FindByUsername(String username) {
+    public FindByUsernameSpecification(String username) {
         this.username = username;
     }
 

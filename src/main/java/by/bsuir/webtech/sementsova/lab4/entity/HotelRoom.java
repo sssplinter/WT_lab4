@@ -2,13 +2,13 @@ package by.bsuir.webtech.sementsova.lab4.entity;
 
 import java.util.Objects;
 
-public class Room implements Entity {
+public class HotelRoom implements Entity {
 
     private Integer id;
     private String roomNumber;
     private Boolean occupied;
 
-    public Room(Integer id, String roomNumber, Boolean occupied) {
+    public HotelRoom(Integer id, String roomNumber, Boolean occupied) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.occupied = occupied;
@@ -42,8 +42,8 @@ public class Room implements Entity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Room room = (Room) o;
-        return id.equals(room.id) && roomNumber.equals(room.roomNumber) && occupied.equals(room.occupied);
+        HotelRoom hotelRoom = (HotelRoom) o;
+        return id.equals(hotelRoom.id) && roomNumber.equals(hotelRoom.roomNumber) && occupied.equals(hotelRoom.occupied);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Room implements Entity {
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "HotelRoom{" +
                 "id=" + id +
                 ", roomNumber='" + roomNumber + '\'' +
                 ", occupied=" + occupied +

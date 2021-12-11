@@ -2,9 +2,9 @@ package by.bsuir.webtech.sementsova.lab4.controllers.commands.user;
 
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.Command;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.CommandResult;
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
-import by.bsuir.webtech.sementsova.lab4.services.RoomService;
+import by.bsuir.webtech.sementsova.lab4.services.HotelRoomService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +17,9 @@ public class MainPageCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        RoomService roomService = new RoomService();
-        List<Room> freeRoomList = roomService.findFree();
-        request.setAttribute(ROOM_LIST, freeRoomList);
+        HotelRoomService hotelRoomService = new HotelRoomService();
+        List<HotelRoom> freeHotelRoomList = hotelRoomService.findFree();
+        request.setAttribute(ROOM_LIST, freeHotelRoomList);
         return CommandResult.forward(MAIN_PAGE);
     }
 }

@@ -2,9 +2,9 @@ package by.bsuir.webtech.sementsova.lab4.controllers.commands.admin;
 
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.Command;
 import by.bsuir.webtech.sementsova.lab4.controllers.commands.CommandResult;
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.ServiceException;
-import by.bsuir.webtech.sementsova.lab4.services.RoomService;
+import by.bsuir.webtech.sementsova.lab4.services.HotelRoomService;
 import by.bsuir.webtech.sementsova.lab4.util.Validator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddRoomCommand implements Command {
+public class AddHotelRoomCommand implements Command {
 
     private static final String MAIN_PAGE = "controller?command=showRooms";
     private static final String ROOM_NUMBER = "roomNumber";
@@ -33,11 +33,11 @@ public class AddRoomCommand implements Command {
             return CommandResult.redirect(MAIN_PAGE + MESSAGE + ERROR_MESSAGE);
         }
 
-        RoomService roomService = new RoomService();
-        roomService.saveRoom(null, roomNumber, false);
+        HotelRoomService hotelRoomService = new HotelRoomService();
+        hotelRoomService.saveRoom(null, roomNumber, false);
 
-        List<Room> roomList = roomService.findAll();
-        request.setAttribute(ROOM_LIST, roomList);
+        List<HotelRoom> hotelRoomList = hotelRoomService.findAll();
+        request.setAttribute(ROOM_LIST, hotelRoomList);
 
         return CommandResult.redirect(MAIN_PAGE + MESSAGE + ADDING_ROOM);
     }

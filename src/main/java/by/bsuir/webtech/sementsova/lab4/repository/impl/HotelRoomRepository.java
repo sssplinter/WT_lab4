@@ -1,7 +1,7 @@
 package by.bsuir.webtech.sementsova.lab4.repository.impl;
 
-import by.bsuir.webtech.sementsova.lab4.builders.RoomBuilder;
-import by.bsuir.webtech.sementsova.lab4.entity.Room;
+import by.bsuir.webtech.sementsova.lab4.builders.HotelRoomBuilder;
+import by.bsuir.webtech.sementsova.lab4.entity.HotelRoom;
 import by.bsuir.webtech.sementsova.lab4.exceptions.DBRepositoryException;
 import by.bsuir.webtech.sementsova.lab4.repository.AbstractRepository;
 import by.bsuir.webtech.sementsova.lab4.specification.Specification;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class RoomRepository extends AbstractRepository<Room> {
+public class HotelRoomRepository extends AbstractRepository<HotelRoom> {
     private static final String TABLE_NAME = " `room` ";
 
     private static final String ID = "id";
@@ -21,12 +21,12 @@ public class RoomRepository extends AbstractRepository<Room> {
 
     private static final String SELECT_QUERY = "SELECT * FROM `room` ";
 
-    public RoomRepository(Connection connection) {
+    public HotelRoomRepository(Connection connection) {
         super(connection);
     }
 
     @Override
-    public Map<String, Object> getFields(Room item) {
+    public Map<String, Object> getFields(HotelRoom item) {
         Map<String, Object> values = new LinkedHashMap<>();
         values.put(ROOM_NUMBER, item.getRoomNumber());
         values.put(OCCUPIED, item.getOccupied());
@@ -41,16 +41,16 @@ public class RoomRepository extends AbstractRepository<Room> {
     }
 
     @Override
-    public Optional<Room> query(Specification specification) throws DBRepositoryException {
+    public Optional<HotelRoom> query(Specification specification) throws DBRepositoryException {
         String query = SELECT_QUERY + specification.toSql();
         List<Object> params = specification.getParameters();
-        return executeQueryForSingleResult(query, new RoomBuilder(), params);
+        return executeQueryForSingleResult(query, new HotelRoomBuilder(), params);
     }
 
     @Override
-    public List<Room> queryAll(Specification specification) throws DBRepositoryException {
+    public List<HotelRoom> queryAll(Specification specification) throws DBRepositoryException {
         String query = SELECT_QUERY + specification.toSql();
         List<Object> params = specification.getParameters();
-        return executeQuery(query, new RoomBuilder(), params);
+        return executeQuery(query, new HotelRoomBuilder(), params);
     }
 }

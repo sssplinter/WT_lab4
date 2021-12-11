@@ -1,7 +1,7 @@
 package by.bsuir.webtech.sementsova.lab4.repository.creator;
 
 import by.bsuir.webtech.sementsova.lab4.database.ConnectionPool;
-import by.bsuir.webtech.sementsova.lab4.repository.impl.RoomRepository;
+import by.bsuir.webtech.sementsova.lab4.repository.impl.HotelRoomRepository;
 import by.bsuir.webtech.sementsova.lab4.repository.impl.UserRepository;
 
 import java.sql.Connection;
@@ -20,8 +20,8 @@ public class RepositoryCreator implements AutoCloseable {
         return new UserRepository(connection);
     }
 
-    public RoomRepository getRoomRepository() {
-        return new RoomRepository(connection);
+    public HotelRoomRepository getRoomRepository() {
+        return new HotelRoomRepository(connection);
     }
 
     @Override

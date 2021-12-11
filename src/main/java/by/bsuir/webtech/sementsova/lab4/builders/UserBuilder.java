@@ -1,6 +1,6 @@
 package by.bsuir.webtech.sementsova.lab4.builders;
 
-import by.bsuir.webtech.sementsova.lab4.entity.Role;
+import by.bsuir.webtech.sementsova.lab4.entity.roles.Role;
 import by.bsuir.webtech.sementsova.lab4.entity.User;
 import by.bsuir.webtech.sementsova.lab4.exceptions.DBRepositoryException;
 
